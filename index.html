@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 50px;
+            background-color: #f0f0f0;
+            gap: 20px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* 左圖：無變形 (No Distortion) */
+        .img-no-distortion {
+            width: 33vw;          /* 寬度約 33% */
+            height: 300px;        /* 高度 300px */
+            border-radius: 18px;  /* radius 18px */
+            
+            /* 關鍵屬性：確保圖片填滿容器但不被拉伸變形 */
+            object-fit: cover;    
+            object-position: center;
+        }
+
+        /* 中圖：圓形頭像 (Circle) */
+        .img-circle {
+            width: 150px;         /* 150px */
+            height: 150px;        /* 150px */
+            border-radius: 50%;   /* 圓形 (或 border 150px) */
+            border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            
+            object-fit: cover;    /* 圓形通常也要加上這個防止變形 */
+        }
+
+        /* 右圖：有變形 (Distortion) */
+        .img-distorted {
+            width: 33vw;          /* 寬度約 33% */
+            height: 300px;        /* 高度 300px */
+            
+            /* 預設行為：強制擠壓圖片以符合寬高 */
+            object-fit: fill;     
+        }
+
+        p {
+            font-family: sans-serif;
+            color: #444;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=600&q=80" class="img-no-distortion">
+        <p>No Distortion (object-fit: cover)</p>
+    </div>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80" class="img-circle">
+        <p>150px Circle</p>
+    </div>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=600&q=80" class="img-distorted">
+        <p>Distortion (object-fit: fill)</p>
+    </div>
+
+</body>
+</html>
